@@ -4,4 +4,5 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./types/AccountTypes"));
+__export(require("./aws/client/JsonRpcClient"));
 //# sourceMappingURL=index.js.map
