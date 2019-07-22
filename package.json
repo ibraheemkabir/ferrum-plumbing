@@ -1,0 +1,26 @@
+{
+  "name": "ferrum-plumbing",
+  "version": "1.0.0",
+  "description": "javascript Plumbing for Ferrum",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ferrumnet/plumbing-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ferrumnet/plumbing-js/issues"
+  },
+  "homepage": "https://github.com/ferrumnet/plumbing-js#readme",
+  "dependencies": {
+    "tslint-config-airbnb-base": "^0.3.0"
+  }
+}
