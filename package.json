@@ -2,7 +2,7 @@
   "name": "ferrum-plumbing",
   "version": "1.0.0",
   "description": "javascript Plumbing for Ferrum",
-  "main": "index.js",
+  "main": "models/index.ts",
   "directories": {
     "example": "examples"
   },
