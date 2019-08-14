@@ -21,11 +21,13 @@
   },
   "homepage": "https://github.com/ferrumnet/plumbing-js#readme",
   "dependencies": {
-    "node-fetch": "^2.6.0",
-    "tslint-config-airbnb-base": "^0.3.0"
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "@types/node": "^12.6.8",
-    "@types/node-fetch": "^2.3.7"
+    "@types/node-fetch": "^2.3.7",
+    "tslint": "^5.0.0",
+    "tslint-config-airbnb-base": "^0.3.0",
+    "typescript": "^3.5.3"
   }
 }
