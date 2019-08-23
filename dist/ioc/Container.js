@@ -28,7 +28,7 @@ class Container {
         });
     }
     get(type) {
-        const name = this.name(type);
+        const name = Container._name(type);
         if (!this.catalog[name]) {
             throw new ContainerError(`Type ${name} is not registered with the container`);
         }
@@ -47,15 +47,15 @@ class Container {
         return res;
     }
     register(type, factory) {
-        const name = this.name(type);
+        const name = Container._name(type);
         this.catalog[name] = factory;
     }
     registerSingleton(type, factory) {
-        const name = this.name(type);
+        const name = Container._name(type);
         this.catalog[name] = factory;
         this.singleTons[name] = UNDEFINED_VALUE;
     }
-    name(type) {
+    static _name(type) {
         if (typeof type === 'string') {
             return type;
         }

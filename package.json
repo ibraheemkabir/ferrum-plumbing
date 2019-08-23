@@ -2,7 +2,8 @@
   "name": "ferrum-plumbing",
   "version": "1.0.0",
   "description": "javascript Plumbing for Ferrum",
-  "main": "models/index.ts",
+  "main": "dist/models/index.js",
+  "types": "dist/models/index.d.ts",
   "directories": {
     "example": "examples"
   },
@@ -21,7 +22,7 @@
   },
   "homepage": "https://github.com/ferrumnet/plumbing-js#readme",
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "cross-fetch": "^3.0.4"
   },
   "devDependencies": {
     "@types/node": "^12.6.8",

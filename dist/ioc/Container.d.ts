@@ -12,7 +12,7 @@ export declare class Container {
     get<T>(type: any): T;
     register<T>(type: any, factory: (c: Container) => T): void;
     registerSingleton<T>(type: any, factory: (c: Container) => T): void;
-    private name;
+    static _name(type: any): string;
 }
 export interface Module {
     configAsync(c: Container): Promise<void>;

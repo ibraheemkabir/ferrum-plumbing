@@ -1,4 +1,3 @@
-import { Headers } from "node-fetch";
 export interface JsonRpcRequest {
     command: string;
     params: string[];
