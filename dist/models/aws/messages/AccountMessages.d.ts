@@ -1,4 +1,4 @@
-import { AccountTransactionHandlerService, Network } from "../../types/AccountTypes";
+import { AccountTransactionHandlerService, Network } from '../../types/AccountTypes';
 export interface AwsMessage {
     eventType: string;
     id: string;
