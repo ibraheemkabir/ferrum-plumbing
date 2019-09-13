@@ -11,11 +11,11 @@ export interface InternalCloudEncryptedKey {
     algo: string;
     keyId: string;
     version: string;
-    key: Uint8Array;
+    key: HexString;
 }
 export interface InternalReactNativeEncryptedKey {
     algo: string;
     keyId: string;
-    key: Uint8Array;
+    key: HexString;
 }
 //# sourceMappingURL=CryptoData.d.ts.map
