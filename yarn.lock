@@ -37,18 +37,6 @@
     reflect-metadata "^0.1.12"
     tslib "^1.8.1"
 
-"@types/node-fetch@^2.3.7":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.5.0.tgz#1c55616a4591bdd15a389fbd0da4a55b9502add5"
-  integrity sha512-TLFRywthBgL68auWj+ziWu+vnmmcHCDFC/sqCOQf1xTz4hRq8cu79z8CtHU9lncExGBsB8fXA4TiLDLt6xvMzw==
-  dependencies:
-    "@types/node" "*"
-
-"@types/node@*", "@types/node@^12.6.8":
-  version "12.7.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.1.tgz#3b5c3a26393c19b400844ac422bd0f631a94d69d"
-  integrity sha512-aK9jxMypeSrhiYofWWBf/T7O+KwaiAHzM4sveCdWPn71lzUSMimRnKzhXDKfKwV1kWoBo2P1aGgaIYGLf9/ljw==
-
 ansi-styles@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
