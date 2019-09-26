@@ -4,7 +4,9 @@
   "description": "javascript Plumbing for Ferrum",
   "main": "dist/models/index.js",
   "types": "dist/models/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "directories": {
     "example": "examples"
   },
@@ -26,6 +28,7 @@
     "cross-fetch": "^3.0.4"
   },
   "devDependencies": {
+    "ts-lint": "^4.5.1",
     "tslint": "^5.0.0",
     "tslint-config-airbnb-base": "^0.3.0",
     "typescript": "^3.5.3"

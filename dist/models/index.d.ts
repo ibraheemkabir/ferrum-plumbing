@@ -5,4 +5,5 @@ export * from './data/AccountData';
 export * from './data/CryptoData';
 export * from './data/Types';
 export * from '../ioc/Container';
+export * from '../utils/ValidationUtils';
 //# sourceMappingURL=index.d.ts.map

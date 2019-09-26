@@ -6,4 +6,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./types/AccountTypes"));
 __export(require("./aws/client/JsonRpcClient"));
 __export(require("../ioc/Container"));
+__export(require("../utils/ValidationUtils"));
 //# sourceMappingURL=index.js.map
