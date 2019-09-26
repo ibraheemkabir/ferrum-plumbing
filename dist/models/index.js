@@ -7,4 +7,5 @@ __export(require("./types/AccountTypes"));
 __export(require("./aws/client/JsonRpcClient"));
 __export(require("../ioc/Container"));
 __export(require("../utils/ValidationUtils"));
+__export(require("../utils/AsyncUtils"));
 //# sourceMappingURL=index.js.map
