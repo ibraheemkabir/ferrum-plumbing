@@ -7,4 +7,6 @@ export * from './data/Types';
 export * from '../ioc/Container';
 export * from '../utils/ValidationUtils';
 export * from '../utils/AsyncUtils';
+export * from '../utils/LocalCache';
+export * from '../utils/TypeUtils';
 //# sourceMappingURL=index.d.ts.map
