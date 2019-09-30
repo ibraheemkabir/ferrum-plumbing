@@ -13,7 +13,7 @@ class TypeUtils {
         // tslint:disable-next-line:no-magic-numbers
         return Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
-    meomize(dis, field, provider) {
+    static meomize(dis, field, provider) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!dis[field]) {
                 const v = yield provider();

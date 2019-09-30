@@ -5,7 +5,7 @@ export class TypeUtils {
     return Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
-  async meomize<T>(dis: any, field: string, provider: () => Promise<T>) {
+  static async meomize<T>(dis: any, field: string, provider: () => Promise<T>) {
     if (!dis[field]) {
       const v = await provider();
       dis[field] = v;
