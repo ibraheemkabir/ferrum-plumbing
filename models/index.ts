@@ -7,6 +7,8 @@ export * from './data/CryptoData';
 export * from './data/Types';
 
 export * from '../ioc/Container';
+export * from '../serviceTypes/Storage';
+
 
 export * from '../utils/ValidationUtils';
 export * from '../utils/AsyncUtils';
