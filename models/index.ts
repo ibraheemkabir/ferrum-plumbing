@@ -9,8 +9,11 @@ export * from './data/Types';
 export * from '../ioc/Container';
 export * from '../serviceTypes/Storage';
 
-
 export * from '../utils/ValidationUtils';
 export * from '../utils/AsyncUtils';
 export * from '../utils/LocalCache';
 export * from '../utils/TypeUtils';
+
+export * from '../clients/AuthenticationProvider';
+export * from '../clients/JsonApiClient';
+export * from '../clients/KeyValueStore';

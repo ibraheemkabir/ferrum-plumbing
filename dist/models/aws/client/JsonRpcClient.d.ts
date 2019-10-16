@@ -1,3 +1,6 @@
+import { AuthenticationProvider } from "../../../clients/AuthenticationProvider";
+export declare class JsonRpcError extends Error {
+}
 export interface JsonRpcRequest {
     command: string;
     params: string[];
@@ -12,11 +15,14 @@ export interface JsonRpcResponse {
     };
     error?: string;
 }
+export declare function raiseForReponse(response: JsonRpcResponse): void;
 export declare class JsonRpcClient {
     endpoint: string;
     private apiKey;
     private secretKey;
-    constructor(endpoint: string, apiKey: string, secretKey: string);
+    private authProvider?;
+    constructor(endpoint: string, apiKey: string, secretKey: string, authProvider?: AuthenticationProvider | undefined);
     call(request: JsonRpcRequest, headers?: Headers): Promise<JsonRpcResponse>;
+    protected fetch(request: JsonRpcRequest, headers: Headers): Promise<Response>;
 }
 //# sourceMappingURL=JsonRpcClient.d.ts.map

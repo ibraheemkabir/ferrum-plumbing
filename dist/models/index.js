@@ -10,4 +10,5 @@ __export(require("../utils/ValidationUtils"));
 __export(require("../utils/AsyncUtils"));
 __export(require("../utils/LocalCache"));
 __export(require("../utils/TypeUtils"));
+__export(require("../clients/JsonApiClient"));
 //# sourceMappingURL=index.js.map

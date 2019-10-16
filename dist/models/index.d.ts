@@ -10,4 +10,7 @@ export * from '../utils/ValidationUtils';
 export * from '../utils/AsyncUtils';
 export * from '../utils/LocalCache';
 export * from '../utils/TypeUtils';
+export * from '../clients/AuthenticationProvider';
+export * from '../clients/JsonApiClient';
+export * from '../clients/KeyValueStore';
 //# sourceMappingURL=index.d.ts.map

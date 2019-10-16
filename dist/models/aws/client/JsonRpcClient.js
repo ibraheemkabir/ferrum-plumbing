@@ -16,21 +16,30 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const cross_fetch_1 = __importStar(require("cross-fetch"));
+class JsonRpcError extends Error {
+}
+exports.JsonRpcError = JsonRpcError;
+function raiseForReponse(response) {
+    if (!!response.error) {
+        throw new JsonRpcError(response.error);
+    }
+}
+exports.raiseForReponse = raiseForReponse;
 class JsonRpcClient {
-    constructor(endpoint, apiKey, secretKey) {
+    constructor(endpoint, apiKey, secretKey, authProvider) {
         this.endpoint = endpoint;
         this.apiKey = apiKey;
         this.secretKey = secretKey;
+        this.authProvider = authProvider;
     }
     call(request, headers = new cross_fetch_1.Headers()) {
         return __awaiter(this, void 0, void 0, function* () {
             headers.append('Content-Type', 'application/json');
-            const res = yield cross_fetch_1.default({
-                headers,
-                method: 'POST',
-                url: this.endpoint,
-                body: JSON.stringify(request),
-            });
+            if (this.authProvider) {
+                const { key, value } = this.authProvider.asHeader();
+                headers.append(key, value);
+            }
+            const res = yield this.fetch(request, headers);
             // tslint:disable-next-line:no-magic-numbers
             if (Math.round(res.status / 100) === 2) {
                 const jsonData = yield res.json();
@@ -45,6 +54,16 @@ class JsonRpcClient {
                 data: {},
                 error: `${res.statusText}:${text}`,
             };
+        });
+    }
+    fetch(request, headers) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return cross_fetch_1.default({
+                headers,
+                method: 'POST',
+                url: this.endpoint,
+                body: JSON.stringify(request),
+            });
         });
     }
 }

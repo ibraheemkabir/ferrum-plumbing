@@ -1,0 +1,1 @@
+{"version":3,"file":"AuthenticationProvider.d.ts","sourceRoot":"","sources":["../../clients/AuthenticationProvider.ts"],"names":[],"mappings":"AACA,MAAM,WAAW,sBAAsB;IACnC,cAAc,IAAI,MAAM,CAAC;IACzB,QAAQ,IAAI;QAAC,GAAG,EAAE,MAAM,CAAC;QAAC,KAAK,EAAE,MAAM,CAAA;KAAC,CAAC;CAC5C"}

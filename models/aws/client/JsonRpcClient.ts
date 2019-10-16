@@ -1,4 +1,7 @@
 import fetch, { Headers } from 'cross-fetch';
+import {AuthenticationProvider} from "../../../clients/AuthenticationProvider";
+
+export class JsonRpcError extends Error {}
 
 export interface JsonRpcRequest {
   command: string;
@@ -12,19 +15,24 @@ export interface JsonRpcResponse {
   error?: string;
 }
 
+export function raiseForReponse(response: JsonRpcResponse) {
+  if (!!response.error) {
+    throw new JsonRpcError(response.error);
+  }
+}
 
 export class JsonRpcClient {
-  constructor(public endpoint: string, private apiKey: string, private secretKey: string) {
+  constructor(public endpoint: string, private apiKey: string, private secretKey: string,
+              private authProvider?: AuthenticationProvider) {
   }
 
   async call(request: JsonRpcRequest, headers: Headers = new Headers()): Promise<JsonRpcResponse> {
     headers.append('Content-Type', 'application/json');
-    const res = await fetch({
-      headers,
-      method: 'POST',
-      url: this.endpoint,
-      body: JSON.stringify(request),
-    } as any);
+    if (this.authProvider) {
+      const {key, value} = this.authProvider.asHeader();
+      headers.append(key, value);
+    }
+    const res = await this.fetch(request, headers);
     // tslint:disable-next-line:no-magic-numbers
     if (Math.round(res.status / 100) === 2) {
       const jsonData = await res.json();
@@ -39,5 +47,14 @@ export class JsonRpcClient {
       data: {},
       error: `${res.statusText}:${text}`,
     };
+  }
+
+  protected async fetch(request: JsonRpcRequest, headers: Headers) {
+    return fetch({
+      headers,
+      method: 'POST',
+      url: this.endpoint,
+      body: JSON.stringify(request),
+    } as any);
   }
 }
