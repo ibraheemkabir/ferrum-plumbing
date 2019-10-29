@@ -21,14 +21,20 @@ function sleep(ms) {
 exports.sleep = sleep;
 function retry(fun) {
     return __awaiter(this, void 0, void 0, function* () {
-        for (let i = 0; i < exports.globalRetryConfig.count; i++) {
+        return retryWithConf(exports.globalRetryConfig, fun);
+    });
+}
+exports.retry = retry;
+function retryWithConf(conf, fun) {
+    return __awaiter(this, void 0, void 0, function* () {
+        for (let i = 0; i < conf.count; i++) {
             try {
                 return yield fun();
             }
             catch (e) {
                 if (e instanceof RetryableError) {
                     // pass
-                    yield sleep(exports.globalRetryConfig.defaultTimeout * Math.pow(2, i));
+                    yield sleep(conf.defaultTimeout * Math.pow(2, i));
                 }
                 else
                     throw e;
@@ -36,5 +42,5 @@ function retry(fun) {
         }
     });
 }
-exports.retry = retry;
+exports.retryWithConf = retryWithConf;
 //# sourceMappingURL=AsyncUtils.js.map
