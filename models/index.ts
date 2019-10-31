@@ -13,6 +13,7 @@ export * from '../utils/ValidationUtils';
 export * from '../utils/AsyncUtils';
 export * from '../utils/LocalCache';
 export * from '../utils/TypeUtils';
+export * from '../utils/Authentication';
 
 export * from '../clients/AuthenticationProvider';
 export * from '../clients/JsonApiClient';

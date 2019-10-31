@@ -5,4 +5,8 @@ export interface AuthenticationProvider {
         value: string;
     };
 }
+export interface AuthenticationVerifyer {
+    isValid(headers: any): boolean;
+    verify(headers: any): void;
+}
 //# sourceMappingURL=AuthenticationProvider.d.ts.map
