@@ -4,6 +4,6 @@ export declare class LoggerFactory implements Injectable {
     private loggerFun;
     constructor(loggerFun: LoggerForClassName);
     __name__(): string;
-    getLogger(clazz: Injectable | string): Logger;
+    getLogger(clazz: any): Logger;
 }
 //# sourceMappingURL=LoggerFactory.d.ts.map
