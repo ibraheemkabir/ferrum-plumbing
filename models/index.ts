@@ -19,3 +19,6 @@ export * from '../clients/AuthenticationProvider';
 export * from '../clients/JsonApiClient';
 export * from '../clients/KeyValueStore';
 
+export * from '../logging/Types';
+export * from '../logging/BasicLoggers';
+export * from '../logging/LoggerFactory';

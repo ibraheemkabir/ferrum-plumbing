@@ -12,4 +12,6 @@ __export(require("../utils/LocalCache"));
 __export(require("../utils/TypeUtils"));
 __export(require("../utils/Authentication"));
 __export(require("../clients/JsonApiClient"));
+__export(require("../logging/BasicLoggers"));
+__export(require("../logging/LoggerFactory"));
 //# sourceMappingURL=index.js.map

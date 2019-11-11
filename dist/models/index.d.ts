@@ -14,4 +14,7 @@ export * from '../utils/Authentication';
 export * from '../clients/AuthenticationProvider';
 export * from '../clients/JsonApiClient';
 export * from '../clients/KeyValueStore';
+export * from '../logging/Types';
+export * from '../logging/BasicLoggers';
+export * from '../logging/LoggerFactory';
 //# sourceMappingURL=index.d.ts.map
