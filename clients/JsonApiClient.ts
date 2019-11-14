@@ -12,7 +12,7 @@ export class JsonApiClient extends JsonRpcClient {
         super(endpoint, '', '', authProvider)
     }
     protected async fetch(request: JsonRpcRequest, headers: Headers) {
-        ValidationUtils.isTrue(!request.params && !request.params!.length,
+        ValidationUtils.isTrue(!request.params || !request.params!.length,
             'Do not include "params" when using JsonApiClient');
         return fetch({
             headers,

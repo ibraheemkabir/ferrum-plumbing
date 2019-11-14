@@ -9,22 +9,26 @@ export class NilLogger implements Injectable, Logger {
     info(...args: any[]): void { }
 }
 
+function timed(msg: string) {
+    return `${new Date().toISOString()} ${msg}`;
+}
+
 export class ConsoleLogger implements Injectable, Logger {
     constructor(private className: string) { }
     __name__(): string { return 'ConsoleLogger'; }
     critical(errorType: string, message: string, error: Error): void {
-        console.error(this.className, errorType, message, error);
+        console.error(timed(this.className), errorType, message, error);
     }
 
     debug(...args: any[]): void {
-        console.debug(this.className, ...args);
+        console.debug(timed(this.className), ...args);
     }
 
     error(...args: any[]): void {
-        console.error(this.className, ...args);
+        console.error(timed(this.className), ...args);
     }
 
     info(...args: any[]): void {
-        console.info(this.className, ...args);
+        console.info(timed(this.className), ...args);
     }
 }

@@ -20,7 +20,7 @@ class JsonApiClient extends JsonRpcClient_1.JsonRpcClient {
     }
     fetch(request, headers) {
         return __awaiter(this, void 0, void 0, function* () {
-            ValidationUtils_1.ValidationUtils.isTrue(!request.params && !request.params.length, 'Do not include "params" when using JsonApiClient');
+            ValidationUtils_1.ValidationUtils.isTrue(!request.params || !request.params.length, 'Do not include "params" when using JsonApiClient');
             return fetch({
                 headers,
                 method: 'POST',
