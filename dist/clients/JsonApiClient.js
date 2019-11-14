@@ -7,9 +7,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const JsonRpcClient_1 = require("../models/aws/client/JsonRpcClient");
-const cross_fetch_1 = require("cross-fetch");
+const cross_fetch_1 = __importDefault(require("cross-fetch"));
 const ValidationUtils_1 = require("../utils/ValidationUtils");
 /**
  * A client that produces slightly different call format compared to JSON RPC:
@@ -22,7 +25,7 @@ class JsonApiClient extends JsonRpcClient_1.JsonRpcClient {
     fetch(request, headers) {
         return __awaiter(this, void 0, void 0, function* () {
             ValidationUtils_1.ValidationUtils.isTrue(!request.params || !request.params.length, 'Do not include "params" when using JsonApiClient');
-            return cross_fetch_1.fetch({
+            return cross_fetch_1.default({
                 headers,
                 method: 'POST',
                 url: this.endpoint + '/' + request.command,
