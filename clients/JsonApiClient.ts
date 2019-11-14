@@ -1,5 +1,5 @@
 import {JsonRpcClient, JsonRpcRequest} from "../models/aws/client/JsonRpcClient";
-import {Headers} from "cross-fetch";
+import {fetch, Headers} from "cross-fetch";
 import {AuthenticationProvider} from "./AuthenticationProvider";
 import {ValidationUtils} from "../utils/ValidationUtils";
 
