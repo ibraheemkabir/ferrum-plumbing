@@ -11,13 +11,14 @@ export class JsonApiClient extends JsonRpcClient {
     constructor(endpoint: string, authProvider: AuthenticationProvider) {
         super(endpoint, '', '', authProvider)
     }
+
     protected async fetch(request: JsonRpcRequest, headers: Headers) {
         ValidationUtils.isTrue(!request.params || !request.params!.length,
             'Do not include "params" when using JsonApiClient');
-        return fetch({
+        const url = this.endpoint + '/' + request.command;
+        return fetch(url, {
             headers,
             method: 'POST',
-            url: this.endpoint + '/' + request.command,
             body: JSON.stringify(request.data),
         } as any);
     }

@@ -50,10 +50,10 @@ export class JsonRpcClient {
   }
 
   protected async fetch(request: JsonRpcRequest, headers: Headers) {
-    return fetch({
+    const url = this.endpoint;
+    return fetch(url, {
       headers,
       method: 'POST',
-      url: this.endpoint,
       body: JSON.stringify(request),
     } as any);
   }

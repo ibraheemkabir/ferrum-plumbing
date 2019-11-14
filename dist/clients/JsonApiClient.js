@@ -25,10 +25,10 @@ class JsonApiClient extends JsonRpcClient_1.JsonRpcClient {
     fetch(request, headers) {
         return __awaiter(this, void 0, void 0, function* () {
             ValidationUtils_1.ValidationUtils.isTrue(!request.params || !request.params.length, 'Do not include "params" when using JsonApiClient');
-            return cross_fetch_1.default({
+            const url = this.endpoint + '/' + request.command;
+            return cross_fetch_1.default(url, {
                 headers,
                 method: 'POST',
-                url: this.endpoint + '/' + request.command,
                 body: JSON.stringify(request.data),
             });
         });

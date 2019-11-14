@@ -58,10 +58,10 @@ class JsonRpcClient {
     }
     fetch(request, headers) {
         return __awaiter(this, void 0, void 0, function* () {
-            return cross_fetch_1.default({
+            const url = this.endpoint;
+            return cross_fetch_1.default(url, {
                 headers,
                 method: 'POST',
-                url: this.endpoint,
                 body: JSON.stringify(request),
             });
         });
