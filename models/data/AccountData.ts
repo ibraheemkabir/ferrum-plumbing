@@ -2,6 +2,9 @@ import { Network } from '../types/AccountTypes';
 import { HexString } from './Types';
 import {EncryptedData} from "./CryptoData";
 
+/**
+ * @deprecated Never store private keys unencrypted.
+ */
 export interface AddressWithSecretKeys {
   network: Network;
   address: string;

@@ -1,4 +1,6 @@
 
+export type LogWriter = (...args: any[]) => void;
+
 export type LoggerForClassName = (className: string) => Logger;
 
 export interface Logger {

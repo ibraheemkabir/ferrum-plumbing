@@ -4,6 +4,8 @@ export * from './aws/client/JsonRpcClient';
 export * from './data/AccountData';
 export * from './data/CryptoData';
 export * from './data/Types';
+export * from './data/address/AddressStorageItem';
+export * from './data/address/stateMachine/AddressSweepState';
 export * from '../ioc/Container';
 export * from '../serviceTypes/Storage';
 export * from '../utils/ValidationUtils';
