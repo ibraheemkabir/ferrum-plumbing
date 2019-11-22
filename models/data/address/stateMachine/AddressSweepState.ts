@@ -1,6 +1,6 @@
 import {Network} from '../../../types/AccountTypes';
 
-export interface PaymentRequest {
+export interface AddressSweepState {
     network: Network;
     address: string;
     currency: string;
