@@ -24,3 +24,4 @@ export * from '../clients/KeyValueStore';
 export * from '../logging/Types';
 export * from '../logging/BasicLoggers';
 export * from '../logging/LoggerFactory';
+export * from '../logging/ConfigurableLogger';

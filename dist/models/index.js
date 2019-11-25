@@ -14,4 +14,5 @@ __export(require("../utils/Authentication"));
 __export(require("../clients/JsonApiClient"));
 __export(require("../logging/BasicLoggers"));
 __export(require("../logging/LoggerFactory"));
+__export(require("../logging/ConfigurableLogger"));
 //# sourceMappingURL=index.js.map

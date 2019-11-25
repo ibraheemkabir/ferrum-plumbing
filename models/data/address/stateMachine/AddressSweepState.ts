@@ -4,8 +4,9 @@ export interface AddressSweepState {
     network: Network;
     address: string;
     currency: string;
+    evidenceTransactionId: string;
     sweep: {
-        state: 'none' | 'failed' | 'sweepSubmitted' | 'sweeped',
+        state: 'none' | 'failed' | 'sweepSubmitted' | 'sweeped' | 'almostEmpty',
         calculatedGas: string,
         transactionId: string,
         sweepTransactionId?: string,
@@ -14,4 +15,3 @@ export interface AddressSweepState {
         reason?: string,
     };
 }
-
