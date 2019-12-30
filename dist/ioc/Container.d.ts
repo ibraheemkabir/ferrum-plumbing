@@ -11,13 +11,16 @@ export interface LifecycleParent<T> {
 }
 export declare function makeInjectable(name: string, type: any): void;
 export declare class Container {
+    private static _containerId;
+    private readonly __id;
+    constructor();
     private catalog;
     private singleTons;
     private managed;
     private stack;
     registerModule(m: Module): Promise<void>;
     get<T>(type: any, container?: Container): T;
-    getContext<T>(): LifecycleContext<T>;
+    getContext<T>(): () => LifecycleContext<T>;
     register<T>(type: any, factory: (c: Container) => T): void;
     registerSingleton<T>(type: any, factory: (c: Container) => T): void;
     registerManagedLifecycle<T>(type: any, factory: (c: Container) => T): void;

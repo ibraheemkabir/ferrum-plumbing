@@ -20,6 +20,13 @@ export function makeInjectable(name: string, type: any): void {
 const UNDEFINED_VALUE = '__UNDEFINED_VALUE__';
 
 export class Container {
+  private static _containerId = 0;
+  private readonly __id: number;
+  constructor() {
+    Container._containerId++;
+    this.__id = Container._containerId;
+  }
+
   private catalog: any = {};
   private singleTons: any = {};
   private managed: any = {};
@@ -47,6 +54,7 @@ export class Container {
 
     this.stack.add(name);
     const res = this.catalog[name](container) as any;
+    res.__container_id = container.__id;
     this.stack.delete(name);
 
     if (this.singleTons[name]) {
@@ -56,7 +64,7 @@ export class Container {
     return res;
   }
 
-  getContext<T>(): LifecycleContext<T> {
+  getContext<T>(): () => LifecycleContext<T> {
     throw new Error('This context is not a lifecycle managed context');
   }
 
@@ -96,16 +104,20 @@ export class Container {
 
         if (dis.managed[name]) { // managed is registered outside but its value is managed inside
           if (!this.managed[name]) {
-            this.managed[name] = dis.get(name);
+            this.managed[name] = dis.get(name, this);
           }
           return this.managed[name];
+        }
+
+        if (dis.singleTons[name]) {
+          return dis.get(name); // Extract singletons only on the base container.
         }
 
         return dis.get(t, this);
       }
 
       getContext<TT>() {
-        return this.lifecycleParent!.getLifecycleContext() as any as TT;
+        return () => this.lifecycleParent!.getLifecycleContext() as any as TT;
       }
     }
     this.catalog[name] = () => {

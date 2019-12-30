@@ -9,6 +9,9 @@ class Counter {
 }
 
 class Dep {
+    constructor() {
+    }
+
     private r = Counter.next();
     print() {
         console.log('Dependency class', this.r);
@@ -16,9 +19,9 @@ class Dep {
 }
 
 class Dep2 extends Dep {
-    constructor(private context: string) { super(); }
+    constructor(private context: string, private ctx: () => LifecycleContext<any>) { super(); }
     print() {
-        console.log('Derived', this.context);
+        console.log('Derived', this.context, this.ctx().context);
         super.print();
     }
 }
@@ -34,35 +37,37 @@ class DeepDep {
 }
 
 class LCP implements Injectable, LifecycleParent<string> {
-    private rand: number;
-    constructor(private depNorm: Dep, private depManaged: Dep, private deepDep: DeepDep) {
-        this.rand = Math.random();
+    private rand: string;
+    constructor(private depNorm: Dep, private depManaged: Dep, private deepDep: DeepDep, private deepDep2: DeepDep) {
+        this.rand = Counter.next().toString();
     }
     __name__(): string { return 'LCP'; }
     getLifecycleContext(): LifecycleContext<string> {
-        return {
-            context: Counter.next().toString(),
-        };
+        return ({
+            context: this.rand,
+        });
     }
 
     run() {
         this.depNorm.print();
         this.depManaged.print();
         this.deepDep.print();
+        this.deepDep2.print();
     }
 }
 
 test('Test managed lifecycles', () => {
     const c = new Container();
-    c.register('Dep', () => new Dep());
-    c.registerManagedLifecycle('Dep2', c => new Dep2(c.get('Dep')));
-    c.registerSingleton('Dep3', () => new Dep());
+    c.register('Dep', c => new Dep());
+    c.registerManagedLifecycle('Dep2', c => new Dep2(c.get('Dep'), c.getContext()));
+    c.registerSingleton('Dep3', c => new Dep());
     c.register('DeepDep', c => new DeepDep(c.get('Dep'), c.get('Dep2'), c.get('Dep3')));
-
-    c.registerLifecycleParent('LCP', c => new LCP(c.get('Dep'), c.get('Dep2'), c.get('DeepDep')));
+    c.register('DeepDep2', c => c.get('DeepDep'));
+    c.registerLifecycleParent('LCP', c => new LCP(c.get('Dep'), c.get('Dep2'), c.get('DeepDep'), c.get('DeepDep2')));
 
     console.log('First run');
     c.get<LCP>('LCP').run();
+
     console.log('Second run');
     c.get<LCP>('LCP').run();
 });

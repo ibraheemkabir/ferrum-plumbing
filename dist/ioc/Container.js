@@ -22,6 +22,8 @@ class Container {
         this.singleTons = {};
         this.managed = {};
         this.stack = new Set();
+        Container._containerId++;
+        this.__id = Container._containerId;
     }
     registerModule(m) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -42,6 +44,7 @@ class Container {
         }
         this.stack.add(name);
         const res = this.catalog[name](container);
+        res.__container_id = container.__id;
         this.stack.delete(name);
         if (this.singleTons[name]) {
             this.singleTons[name] = res;
@@ -86,14 +89,17 @@ class Container {
                 }
                 if (dis.managed[name]) { // managed is registered outside but its value is managed inside
                     if (!this.managed[name]) {
-                        this.managed[name] = dis.get(name);
+                        this.managed[name] = dis.get(name, this);
                     }
                     return this.managed[name];
+                }
+                if (dis.singleTons[name]) {
+                    return dis.get(name); // Extract singletons only on the base container.
                 }
                 return dis.get(t, this);
             }
             getContext() {
-                return this.lifecycleParent.getLifecycleContext();
+                return () => this.lifecycleParent.getLifecycleContext();
             }
         }
         this.catalog[name] = () => {
@@ -112,5 +118,6 @@ class Container {
         return type.prototype.__name__();
     }
 }
+Container._containerId = 0;
 exports.Container = Container;
 //# sourceMappingURL=Container.js.map
