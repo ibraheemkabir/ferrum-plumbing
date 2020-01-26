@@ -13,7 +13,7 @@ export class SecretAuthProvider implements AuthenticationProvider, Authenticatio
     }
 
     isValid(headers: any): boolean {
-        return headers['X-Secret'] === this.secret;
+        return (headers['X-Secret'] || headers['x-secret']) === this.secret;
     }
 
     verify(headers: any): void {

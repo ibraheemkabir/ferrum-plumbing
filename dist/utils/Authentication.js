@@ -12,7 +12,7 @@ class SecretAuthProvider {
         return '';
     }
     isValid(headers) {
-        return headers['X-Secret'] === this.secret;
+        return (headers['X-Secret'] || headers['x-secret']) === this.secret;
     }
     verify(headers) {
         ValidationUtils_1.ValidationUtils.isTrue(this.isValid(headers), 'Unauthorized');
