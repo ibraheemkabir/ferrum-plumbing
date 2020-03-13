@@ -31,12 +31,12 @@ export class MetricsAggregator {
   reset(): Metric[] {
     const rv: Metric[] = [];
     for(const key of this.counters.keys()) {
-      rv.push({ key, count: this.counters.get(key)! } as ScalarMetric);
+      rv.push({ key,  count: this.counters.get(key)!, unit: 'Count' } as ScalarMetric);
     }
 
     for(const key of this.timersCnt.keys()) {
-      rv.push({ key: key + '.max', time: this.timersMax.get(key)! } as PeriodMetric);
-      rv.push({ key: key + '.avg', time: this.timersAvg.get(key)! } as PeriodMetric);
+      rv.push({ key: key + '.max', time: this.timersMax.get(key)!, unit: 'Milliseconds' } as PeriodMetric);
+      rv.push({ key: key + '.avg', time: this.timersAvg.get(key)!, unit: 'Milliseconds' } as PeriodMetric);
     }
 
     this.counters = new Map<string, number>();

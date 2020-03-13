@@ -1,6 +1,7 @@
 
 export interface Metric {
   key: string;
+  unit: 'Milliseconds' | 'Count';
 }
 
 export interface Timed {

@@ -11,6 +11,10 @@ export * from './data/address/stateMachine/AddressSweepState';
 export * from '../ioc/Container';
 export * from '../serviceTypes/Storage';
 
+export * from '../monitoring/Types';
+export * from '../monitoring/MetricsAggregator';
+export * from '../monitoring/MetricsService';
+
 export * from '../utils/ValidationUtils';
 export * from '../utils/AsyncUtils';
 export * from '../utils/LocalCache';

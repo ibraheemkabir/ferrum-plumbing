@@ -29,11 +29,11 @@ class MetricsAggregator {
     reset() {
         const rv = [];
         for (const key of this.counters.keys()) {
-            rv.push({ key, count: this.counters.get(key) });
+            rv.push({ key, count: this.counters.get(key), unit: 'Count' });
         }
         for (const key of this.timersCnt.keys()) {
-            rv.push({ key: key + '.max', time: this.timersMax.get(key) });
-            rv.push({ key: key + '.avg', time: this.timersAvg.get(key) });
+            rv.push({ key: key + '.max', time: this.timersMax.get(key), unit: 'Milliseconds' });
+            rv.push({ key: key + '.avg', time: this.timersAvg.get(key), unit: 'Milliseconds' });
         }
         this.counters = new Map();
         this.timersMax = new Map();
