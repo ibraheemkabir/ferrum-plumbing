@@ -1,12 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -22,15 +14,13 @@ class JsonApiClient extends JsonRpcClient_1.JsonRpcClient {
     constructor(endpoint, authProvider) {
         super(endpoint, '', '', authProvider);
     }
-    fetch(request, headers) {
-        return __awaiter(this, void 0, void 0, function* () {
-            ValidationUtils_1.ValidationUtils.isTrue(!request.params || !request.params.length, 'Do not include "params" when using JsonApiClient');
-            const url = this.endpoint + '/' + request.command;
-            return cross_fetch_1.default(url, {
-                headers,
-                method: 'POST',
-                body: JSON.stringify(request.data),
-            });
+    async fetch(request, headers) {
+        ValidationUtils_1.ValidationUtils.isTrue(!request.params || !request.params.length, 'Do not include "params" when using JsonApiClient');
+        const url = this.endpoint + '/' + request.command;
+        return cross_fetch_1.default(url, {
+            headers,
+            method: 'POST',
+            body: JSON.stringify(request.data),
         });
     }
 }

@@ -1,12 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 class ContainerError extends Error {
 }
@@ -25,10 +17,8 @@ class Container {
         Container._containerId++;
         this.__id = Container._containerId;
     }
-    registerModule(m) {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield m.configAsync(this);
-        });
+    async registerModule(m) {
+        await m.configAsync(this);
     }
     get(type, container) {
         const name = Container._name(type);
