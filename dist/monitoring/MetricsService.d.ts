@@ -8,10 +8,13 @@ export declare class MetricsService implements Injectable {
     private uploader;
     private logFac;
     private log;
+    private interval;
     constructor(aggregator: MetricsAggregator, config: MetricsServiceConfig, uploader: MetricsUploader, logFac: LoggerFactory);
     __name__(): string;
     count(name: string, count?: number): void;
     time(name: string, time: number): void;
+    start(): void;
+    stop: () => void;
     private cycle;
 }
 //# sourceMappingURL=MetricsService.d.ts.map

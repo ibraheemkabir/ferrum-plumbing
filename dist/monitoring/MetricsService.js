@@ -6,17 +6,25 @@ class MetricsService {
         this.config = config;
         this.uploader = uploader;
         this.logFac = logFac;
+        this.stop = () => {
+            clearInterval(this.interval);
+        };
         this.log = logFac.getLogger(MetricsService);
+        this.cycle = this.cycle.bind(this);
+        this.start = this.start.bind(this);
     }
     __name__() { return 'MetricsService'; }
     count(name, count) {
         this.aggregator.count(name, count);
-        this.cycle().catch(e => this.log.error('time', e));
     }
     time(name, time) {
         this.aggregator.time(name, time);
-        this.cycle().catch(e => this.log.error('time', e));
     }
+    start() {
+        this.log.info('Starting the Metric service with upload intervals: ', this.config.period);
+        this.interval = setInterval(() => { this.cycle(); }, this.config.period);
+    }
+    ;
     async cycle() {
         const metrics = this.aggregator.reset();
         return this.uploader.uploadMetrics(metrics);

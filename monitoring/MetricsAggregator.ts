@@ -1,7 +1,9 @@
 import {Metric, PeriodMetric, ScalarMetric} from "./Types";
 
 export class MetricsAggregator {
-  constructor() { }
+  constructor() {
+    console.log('MetricsAggregator is constructed')
+  }
 
   private counters = new Map<string, number>();
   private timersMax = new Map<string, number>();

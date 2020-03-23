@@ -6,6 +6,7 @@ class MetricsAggregator {
         this.timersMax = new Map();
         this.timersAvg = new Map();
         this.timersCnt = new Map();
+        console.log('MetricsAggregator is constructed');
     }
     count(name, count) {
         this.counters.set(name, (this.counters.get(name) || 0) + (count || 1));
