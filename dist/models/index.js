@@ -17,4 +17,5 @@ __export(require("../clients/JsonApiClient"));
 __export(require("../logging/BasicLoggers"));
 __export(require("../logging/LoggerFactory"));
 __export(require("../logging/ConfigurableLogger"));
+__export(require("../scheduler/LongRunningScheduler"));
 //# sourceMappingURL=index.js.map

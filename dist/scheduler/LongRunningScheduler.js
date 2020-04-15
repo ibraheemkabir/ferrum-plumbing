@@ -70,7 +70,7 @@ class LongRunningScheduler {
                             if (j.retries >= j.options.retry.count) {
                                 this.die();
                             }
-                            else {
+                            else if (now > (j.lastRun + j.options.repeatPeriod)) {
                                 //Retry.
                                 j.retries += 1;
                                 j.lastRun = now + j.options.retry.defaultTimeout || 0;
