@@ -61,7 +61,7 @@ class LongRunningScheduler {
                             this.log.debug('Job completed: ' + k);
                             this.jobs.delete(k);
                         }
-                        else {
+                        else if (now > (j.lastRun + j.options.repeatPeriod)) {
                             const message = 'Error running job "' + k + '": ' + e.message;
                             this.log.debug(message);
                             if (j.options.logErrors) {
@@ -70,7 +70,7 @@ class LongRunningScheduler {
                             if (j.retries >= j.options.retry.count) {
                                 this.die();
                             }
-                            else if (now > (j.lastRun + j.options.repeatPeriod)) {
+                            else {
                                 //Retry.
                                 j.retries += 1;
                                 j.lastRun = now + j.options.retry.defaultTimeout || 0;
