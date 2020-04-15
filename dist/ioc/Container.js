@@ -108,6 +108,6 @@ class Container {
         return type.prototype.__name__();
     }
 }
-Container._containerId = 0;
 exports.Container = Container;
+Container._containerId = 0;
 //# sourceMappingURL=Container.js.map

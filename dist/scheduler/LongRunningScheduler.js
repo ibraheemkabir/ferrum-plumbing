@@ -73,6 +73,7 @@ class LongRunningScheduler {
                             else {
                                 //Retry.
                                 j.retries += 1;
+                                j.lastRun = now + j.options.retry.defaultTimeout || 0;
                                 this._run(j);
                                 this.log.debug('Retried a new job for number ' + j.retries + ': ' + k);
                             }
@@ -83,6 +84,7 @@ class LongRunningScheduler {
                             // Schedule a new job.
                             j.lastResult = j.current.result();
                             j.retries = 0;
+                            j.lastRun = Date.now();
                             this._run(j);
                             this.log.debug('Ran a new job for ' + k);
                         }
@@ -112,7 +114,6 @@ class LongRunningScheduler {
     _run(j) {
         const newJob = new WrappedPromise(() => j.jobFactory(j.lastResult));
         j.current = newJob;
-        j.lastRun = Date.now();
         newJob.run();
     }
     died() {
