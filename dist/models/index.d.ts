@@ -16,6 +16,8 @@ export * from '../utils/AsyncUtils';
 export * from '../utils/LocalCache';
 export * from '../utils/TypeUtils';
 export * from '../utils/Authentication';
+export * from '../utils/Throttler';
+export * from '../utils/ServiceMultiplexer';
 export * from '../clients/AuthenticationProvider';
 export * from '../clients/JsonApiClient';
 export * from '../clients/KeyValueStore';

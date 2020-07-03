@@ -13,6 +13,8 @@ __export(require("../utils/AsyncUtils"));
 __export(require("../utils/LocalCache"));
 __export(require("../utils/TypeUtils"));
 __export(require("../utils/Authentication"));
+__export(require("../utils/Throttler"));
+__export(require("../utils/ServiceMultiplexer"));
 __export(require("../clients/JsonApiClient"));
 __export(require("../logging/BasicLoggers"));
 __export(require("../logging/LoggerFactory"));
