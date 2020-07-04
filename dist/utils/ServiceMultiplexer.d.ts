@@ -1,4 +1,4 @@
-import { Injectable } from "models";
+import { Injectable, LoggerFactory } from "models";
 /**
  * Multiplexes a service. Uses different providers in order.
  * Algo:
@@ -10,12 +10,14 @@ import { Injectable } from "models";
 export declare class ServiceMultiplexer<T> implements Injectable {
     private index;
     private providers;
-    constructor(providers: (() => T)[]);
+    private log;
+    constructor(providers: (() => T)[], logFac: LoggerFactory);
     __name__(): string;
     /**
      * Returns the current provider. If the current provider has not changed, will reset the retries
      */
     get(): T;
     failed(): void;
+    retryAsync<TOut>(fun: (t: T) => Promise<TOut>): Promise<TOut | undefined>;
 }
 //# sourceMappingURL=ServiceMultiplexer.d.ts.map

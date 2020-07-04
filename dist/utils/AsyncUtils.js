@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.globalRetryConfig = {
     defaultTimeout: 300,
+    maxTimeout: 600000,
     count: 3,
 };
 class RetryableError extends Error {
@@ -23,7 +24,7 @@ async function retryWithConf(conf, fun) {
         catch (e) {
             if (e instanceof RetryableError) {
                 // pass
-                await sleep(conf.defaultTimeout * Math.pow(2, i));
+                await sleep(Math.min(conf.maxTimeout, conf.defaultTimeout * Math.pow(2, i)));
             }
             else
                 throw e;

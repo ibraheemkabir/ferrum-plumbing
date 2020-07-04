@@ -1,4 +1,4 @@
-import { Injectable, ValidationUtils } from "models";
+import { Injectable, ValidationUtils, retry, Logger, LoggerFactory, RetryableError } from "models";
 
 interface MuxInfo<T> {
     nextCallTimeout: number;
@@ -19,8 +19,9 @@ const TEN_MINUTES = 10 * 60 * 1000;
 export class ServiceMultiplexer<T> implements Injectable {
     private index: number = 0;
     private providers : MuxInfo<T>[] = [];
+    private log: Logger;
 
-    constructor(providers: (() => T)[]) {
+    constructor(providers: (() => T)[], logFac: LoggerFactory) {
         ValidationUtils.isTrue(!!providers && providers.length >= 1, 'At least one provider is required');
         providers.forEach(p => {
             this.providers.push({
@@ -31,6 +32,7 @@ export class ServiceMultiplexer<T> implements Injectable {
         });
         this.get = this.get.bind(this);
         this.failed = this.failed.bind(this);
+        this.log = logFac.getLogger(ServiceMultiplexer);
     }
 
     __name__() { return 'ServiceMultiplexer'; }
@@ -57,5 +59,17 @@ export class ServiceMultiplexer<T> implements Injectable {
         const current = this.providers[this.index];
         current.errors += 1;
         current.nextCallTimeout = Date.now() + Math.min(TEN_MINUTES, (2 ** current.errors) * 100 );
+    }
+
+    async retryAsync<TOut>(fun: (t: T) => Promise<TOut>) {
+        return retry(async () => {
+        try{
+            const t = this.get();
+            return await fun(t);
+        } catch(e) {
+            this.log.error('retryAsync: ', e);
+            this.failed();
+            throw new RetryableError(e.message);
+        }});
     }
 }

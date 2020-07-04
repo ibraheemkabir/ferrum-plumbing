@@ -1,5 +1,6 @@
 export interface RetryConfig {
     defaultTimeout: number;
+    maxTimeout: number;
     count: number;
 }
 export declare const globalRetryConfig: RetryConfig;

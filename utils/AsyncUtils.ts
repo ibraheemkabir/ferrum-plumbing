@@ -1,10 +1,12 @@
 export interface RetryConfig {
   defaultTimeout: number,
+  maxTimeout: number,
   count: number,
 }
 
 export const globalRetryConfig = {
   defaultTimeout: 300,
+  maxTimeout: 600000, // 10 seconds
   count: 3,
 } as RetryConfig;
 
@@ -25,7 +27,7 @@ export async function retryWithConf<T>(conf: RetryConfig, fun: () => Promise<T>)
     } catch (e) {
       if (e instanceof RetryableError) {
         // pass
-        await sleep(conf.defaultTimeout * Math.pow(2, i));
+        await sleep(Math.min(conf.maxTimeout, conf.defaultTimeout * Math.pow(2, i)));
       } else throw e;
     }
   }

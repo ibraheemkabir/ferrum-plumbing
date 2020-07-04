@@ -11,7 +11,7 @@ const TEN_MINUTES = 10 * 60 * 1000;
  *  4. Next get, fall back to the first item that is available
  */
 class ServiceMultiplexer {
-    constructor(providers) {
+    constructor(providers, logFac) {
         this.index = 0;
         this.providers = [];
         models_1.ValidationUtils.isTrue(!!providers && providers.length >= 1, 'At least one provider is required');
@@ -24,6 +24,7 @@ class ServiceMultiplexer {
         });
         this.get = this.get.bind(this);
         this.failed = this.failed.bind(this);
+        this.log = logFac.getLogger(ServiceMultiplexer);
     }
     __name__() { return 'ServiceMultiplexer'; }
     /**
@@ -47,6 +48,19 @@ class ServiceMultiplexer {
         const current = this.providers[this.index];
         current.errors += 1;
         current.nextCallTimeout = Date.now() + Math.min(TEN_MINUTES, (2 ** current.errors) * 100);
+    }
+    async retryAsync(fun) {
+        return models_1.retry(async () => {
+            try {
+                const t = this.get();
+                return await fun(t);
+            }
+            catch (e) {
+                this.log.error('retryAsync: ', e);
+                this.failed();
+                throw new models_1.RetryableError(e.message);
+            }
+        });
     }
 }
 exports.ServiceMultiplexer = ServiceMultiplexer;
