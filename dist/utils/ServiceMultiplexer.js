@@ -20,6 +20,7 @@ class ServiceMultiplexer {
             this.providers.push({
                 func: p,
                 nextCallTimeout: 0,
+                errorBuffer: 0,
                 errors: 0,
             });
         });
@@ -40,15 +41,19 @@ class ServiceMultiplexer {
         if (firstCoolIdx >= 0) {
             firstCool = this.providers[firstCoolIdx];
             this.index = firstCoolIdx;
-            firstCool.errors = 0;
+            firstCool.errors = 0; // TODO: This should only be done if using the index is successful
             firstCool.nextCallTimeout = now;
         }
         return firstCool.func();
     }
     failed() {
         const current = this.providers[this.index];
-        current.errors += 1;
-        current.nextCallTimeout = Date.now() + Math.min(TEN_MINUTES, (2 ** current.errors) * 100);
+        const now = Date.now();
+        if (current.errorBuffer <= now) {
+            current.errors += 1;
+            current.nextCallTimeout = now + Math.min(TEN_MINUTES, (2 ** current.errors) * 400);
+            current.errorBuffer = now + 100;
+        }
     }
     async retryAsync(fun) {
         return AsyncUtils_1.retry(async () => {

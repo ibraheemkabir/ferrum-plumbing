@@ -6,6 +6,7 @@ import { retry, RetryableError } from "./AsyncUtils";
 
 interface MuxInfo<T> {
     nextCallTimeout: number;
+    errorBuffer: number;
     errors: number;
     func: () => T;
 }
@@ -31,6 +32,7 @@ export class ServiceMultiplexer<T> implements Injectable {
             this.providers.push({
                 func: p,
                 nextCallTimeout: 0,
+                errorBuffer: 0,
                 errors: 0,
             });
         });
@@ -53,7 +55,7 @@ export class ServiceMultiplexer<T> implements Injectable {
         if (firstCoolIdx >= 0) {
             firstCool = this.providers[firstCoolIdx];
             this.index = firstCoolIdx;
-            firstCool!.errors = 0;
+            firstCool!.errors = 0; // TODO: This should only be done if using the index is successful
             firstCool.nextCallTimeout = now;
         }
         return firstCool.func();
@@ -61,8 +63,12 @@ export class ServiceMultiplexer<T> implements Injectable {
 
     failed() {
         const current = this.providers[this.index];
-        current.errors += 1;
-        current.nextCallTimeout = Date.now() + Math.min(TEN_MINUTES, (2 ** current.errors) * 100 );
+        const now = Date.now();
+        if (current.errorBuffer <= now) {
+            current.errors += 1;
+            current.nextCallTimeout = now + Math.min(TEN_MINUTES, (2 ** current.errors) * 400 );
+            current.errorBuffer = now + 100;
+        }
     }
 
     async retryAsync<TOut>(fun: (t: T) => Promise<TOut>) {
