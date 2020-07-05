@@ -1,4 +1,4 @@
-import { Injectable } from "models";
+import { Injectable } from "ioc/Container";
 export declare class Throttler implements Injectable {
     private timeBetweenCalls;
     private nextSchedule;

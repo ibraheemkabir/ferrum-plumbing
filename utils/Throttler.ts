@@ -1,4 +1,5 @@
-import { Injectable, sleep } from "models";
+import { Injectable } from "ioc/Container";
+import { sleep } from "./AsyncUtils";
 
 export class Throttler implements Injectable {
     private nextSchedule: number = 0;

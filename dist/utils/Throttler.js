@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const models_1 = require("models");
+const AsyncUtils_1 = require("./AsyncUtils");
 class Throttler {
     constructor(timeBetweenCalls = 250) {
         this.timeBetweenCalls = timeBetweenCalls;
@@ -13,7 +13,7 @@ class Throttler {
         this.nextSchedule = executionTime + this.timeBetweenCalls;
         const sleepTime = executionTime - now;
         if (sleepTime > 0) {
-            await models_1.sleep(sleepTime);
+            await AsyncUtils_1.sleep(sleepTime);
         }
     }
 }
