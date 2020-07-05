@@ -1,4 +1,5 @@
-import { Injectable, LoggerFactory } from "models";
+import { Injectable } from "ioc/Container";
+import { LoggerFactory } from "logging/LoggerFactory";
 /**
  * Multiplexes a service. Uses different providers in order.
  * Algo:

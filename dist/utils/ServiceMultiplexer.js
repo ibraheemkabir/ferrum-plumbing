@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const models_1 = require("models");
+const ValidationUtils_1 = require("./ValidationUtils");
+const AsyncUtils_1 = require("./AsyncUtils");
 const TEN_MINUTES = 10 * 60 * 1000;
 /**
  * Multiplexes a service. Uses different providers in order.
@@ -14,7 +15,7 @@ class ServiceMultiplexer {
     constructor(providers, logFac) {
         this.index = 0;
         this.providers = [];
-        models_1.ValidationUtils.isTrue(!!providers && providers.length >= 1, 'At least one provider is required');
+        ValidationUtils_1.ValidationUtils.isTrue(!!providers && providers.length >= 1, 'At least one provider is required');
         providers.forEach(p => {
             this.providers.push({
                 func: p,
@@ -50,7 +51,7 @@ class ServiceMultiplexer {
         current.nextCallTimeout = Date.now() + Math.min(TEN_MINUTES, (2 ** current.errors) * 100);
     }
     async retryAsync(fun) {
-        return models_1.retry(async () => {
+        return AsyncUtils_1.retry(async () => {
             try {
                 const t = this.get();
                 return await fun(t);
@@ -58,7 +59,7 @@ class ServiceMultiplexer {
             catch (e) {
                 this.log.error('retryAsync: ', e);
                 this.failed();
-                throw new models_1.RetryableError(e.message);
+                throw new AsyncUtils_1.RetryableError(e.message);
             }
         });
     }
