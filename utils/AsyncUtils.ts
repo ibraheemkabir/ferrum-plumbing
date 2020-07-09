@@ -23,11 +23,16 @@ export async function retry<T>(fun: () => Promise<T>) {
 export async function retryWithConf<T>(conf: RetryConfig, fun: () => Promise<T>) {
   for(let i = 0; i < conf.count; i++) {
     try {
-      return await fun();
+      const res = await fun();
+      if (i > 0) {
+        console.log(`Call succeeded after ${i} retries`);
+      }
+      return res;
     } catch (e) {
       if (e instanceof RetryableError) {
         // pass
-        await sleep(Math.min(conf.maxTimeout, conf.defaultTimeout * Math.pow(2, i)));
+        await sleep(
+          Math.round(Math.random() * Math.min(conf.maxTimeout, conf.defaultTimeout * Math.pow(2, i))));
       } else throw e;
     }
   }
