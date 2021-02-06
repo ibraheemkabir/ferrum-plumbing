@@ -30,8 +30,10 @@ async function retryWithConf(conf, fun) {
                 // pass
                 await sleep(Math.round(Math.random() * Math.min(conf.maxTimeout, conf.defaultTimeout * Math.pow(2, i))));
             }
-            else
+            else {
+                console.error('Retry failed all the attempts', i, e.message || e);
                 throw e;
+            }
         }
     }
 }

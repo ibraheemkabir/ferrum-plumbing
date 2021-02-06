@@ -12,7 +12,7 @@ export class LocalCache implements Injectable {
   private readonly cache = new Map<string, any>();
   private lastCleanup = Date.now();
   async getAsync<T>(key: string, factory: () => Promise<T>, timeout?: number): Promise<T> {
-    if (!this.cache.has(key)) {
+    if (!this.get(key)) {
       const res = await factory();
       this.set(key, res, timeout);
     }
@@ -26,6 +26,9 @@ export class LocalCache implements Injectable {
   get<T>(key: string) {
     const res = this.cache.get(key);
     this.cleanup();
+    if (res.timeout && (res.time + res.timeout) < Date.now()) {
+      return undefined;
+    }
     return res ? res.item : res;
   }
 

@@ -33,7 +33,10 @@ export async function retryWithConf<T>(conf: RetryConfig, fun: () => Promise<T>)
         // pass
         await sleep(
           Math.round(Math.random() * Math.min(conf.maxTimeout, conf.defaultTimeout * Math.pow(2, i))));
-      } else throw e;
+      } else {
+        console.error('Retry failed all the attempts', i, e.message || e);
+        throw e;
+      }
     }
   }
 }

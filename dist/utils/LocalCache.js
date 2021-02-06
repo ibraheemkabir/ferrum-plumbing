@@ -7,7 +7,7 @@ class LocalCache {
         this.lastCleanup = Date.now();
     }
     async getAsync(key, factory, timeout) {
-        if (!this.cache.has(key)) {
+        if (!this.get(key)) {
             const res = await factory();
             this.set(key, res, timeout);
         }
@@ -19,6 +19,9 @@ class LocalCache {
     get(key) {
         const res = this.cache.get(key);
         this.cleanup();
+        if (res.timeout && (res.time + res.timeout) < Date.now()) {
+            return undefined;
+        }
         return res ? res.item : res;
     }
     cleanup() {
