@@ -19,7 +19,7 @@ class LocalCache {
     get(key) {
         const res = this.cache.get(key);
         this.cleanup();
-        if (res.timeout && (res.time + res.timeout) < Date.now()) {
+        if (res && res.timeout && (res.time + res.timeout) < Date.now()) {
             return undefined;
         }
         return res ? res.item : res;
