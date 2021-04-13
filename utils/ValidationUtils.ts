@@ -12,4 +12,9 @@ export class ValidationUtils {
       throw new ValidationError(message);
     }
   }
+  static allRequired(keys: string[], v: any) {
+    keys.forEach(k => {
+      ValidationUtils.isTrue(!!k, `"${k}" must be provided`);
+    })
+  }
 }

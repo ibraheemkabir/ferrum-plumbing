@@ -14,6 +14,11 @@ class ValidationUtils {
             throw new ValidationError(message);
         }
     }
+    static allRequired(keys, v) {
+        keys.forEach(k => {
+            ValidationUtils.isTrue(!!k, `"${k}" must be provided`);
+        });
+    }
 }
 exports.ValidationUtils = ValidationUtils;
 //# sourceMappingURL=ValidationUtils.js.map

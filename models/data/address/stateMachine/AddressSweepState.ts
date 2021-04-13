@@ -1,5 +1,6 @@
 import {Network} from '../../../types/AccountTypes';
 
+// @deprecated
 export interface AddressSweepState {
     network: Network;
     address: string;

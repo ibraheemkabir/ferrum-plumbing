@@ -32,6 +32,14 @@ export class LocalCache implements Injectable {
     return res ? res.item : res;
   }
 
+  remove(key: string) {
+    this.cache.delete(key);
+  }
+
+  clear() {
+    this.cache.clear();
+  }
+
   cleanup() {
     const now = Date.now();
     if ((now - this.lastCleanup) > CLEANUP_TIME) {

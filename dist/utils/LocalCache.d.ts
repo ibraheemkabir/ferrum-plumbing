@@ -5,6 +5,8 @@ export declare class LocalCache implements Injectable {
     getAsync<T>(key: string, factory: () => Promise<T>, timeout?: number): Promise<T>;
     set<T>(key: string, item: T, timeout?: number): void;
     get<T>(key: string): any;
+    remove(key: string): void;
+    clear(): void;
     cleanup(): void;
     __name__(): string;
 }
