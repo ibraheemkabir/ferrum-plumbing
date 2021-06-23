@@ -12,8 +12,10 @@ function chainToEthNetwork(chain) {
     }
     let id = `${chain.chain.toUpperCase()}_${chain.network.toUpperCase()}`;
     // Backward compatiblity
+    let cur = chain.nativeCurrency.symbol;
     if (id === 'MATIC_TESTNET') {
         id = 'MUMBAI_TESTNET';
+        cur = 'MATIC';
     }
     if (id === 'ETHEREUM_MAINNET') {
         id = 'ETHEREUM';
@@ -21,13 +23,17 @@ function chainToEthNetwork(chain) {
     if (id === 'BSC_MAINNET') {
         id = 'BSC';
     }
+    if (id === 'BSC_CHAPEL') {
+        id = 'BSC_TESTNET';
+        cur = 'BNB';
+    }
     if (id === 'POLYGON_MAINNET') {
         id = 'POLYGON';
     }
     if (id === 'ETHEREUM_RINKEBY') {
         id = 'RINKEBY';
+        cur = 'ETH';
     }
-    const cur = chain.nativeCurrency.symbol;
     return {
         id: id,
         displayName: chain.name,
