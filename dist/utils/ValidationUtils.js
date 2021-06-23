@@ -21,4 +21,8 @@ class ValidationUtils {
     }
 }
 exports.ValidationUtils = ValidationUtils;
+function panick(msg) {
+    throw new Error(msg);
+}
+exports.panick = panick;
 //# sourceMappingURL=ValidationUtils.js.map

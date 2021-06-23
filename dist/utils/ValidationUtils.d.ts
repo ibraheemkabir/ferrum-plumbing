@@ -5,4 +5,5 @@ export declare class ValidationUtils {
     static isTrue(predicate: boolean, message: string): void;
     static allRequired(keys: string[], v: any): void;
 }
+export declare function panick(msg: string): void;
 //# sourceMappingURL=ValidationUtils.d.ts.map
