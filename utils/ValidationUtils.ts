@@ -18,3 +18,7 @@ export class ValidationUtils {
     })
   }
 }
+
+export function panick(msg: string) {
+	throw new Error(msg);
+}
