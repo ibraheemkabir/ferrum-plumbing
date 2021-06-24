@@ -33,3 +33,4 @@ export * from '../logging/LoggerFactory';
 export * from '../logging/ConfigurableLogger';
 
 export * from '../scheduler/LongRunningScheduler';
+export * from '../models/types/Networks';
