@@ -33,6 +33,7 @@ function chainToEthNetwork(chain) {
     if (id === 'ETHEREUM_RINKEBY') {
         id = 'RINKEBY';
         cur = 'ETH';
+        chain.chainId = 4;
     }
     return {
         id: id,
@@ -48,9 +49,10 @@ function chainToEthNetwork(chain) {
 function byId(key, items) {
     const rv = new Map();
     items.forEach(i => {
-        const k = key(i);
-        if (k) {
-            rv.set(key(i).toString(), i);
+        var _a;
+        const k = (_a = key(i)) === null || _a === void 0 ? void 0 : _a.toString();
+        if (k && !rv.get(k)) {
+            rv.set(k, i);
         }
     });
     return rv;

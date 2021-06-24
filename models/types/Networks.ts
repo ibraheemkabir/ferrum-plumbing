@@ -54,9 +54,9 @@ function chainToEthNetwork(chain: any): EthNetwork {
 function byId(key: (k: EthNetwork) => any, items: EthNetwork[]): Map<string, EthNetwork> {
 	const rv = new Map<string, EthNetwork>();
 	items.forEach(i => {
-		const k = key(i);
-		if (k) {
-			rv.set(key(i).toString(), i);
+		const k = key(i)?.toString();
+		if (k && !rv.get(k)) {
+			rv.set(k, i);
 		}
 	});
 	return rv;
