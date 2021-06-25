@@ -10,5 +10,9 @@ test('Check legacy ids', function () {
     console.log('Rinky', rinkeby, rinkebyById);
     expect(rinkeby.chainId).toBe(4);
     expect(rinkebyById.chainId).toBe(4);
+    const poly = Networks_1.Networks.for('POLYGON');
+    const polyById = Networks_1.Networks.forChainId(137);
+    expect(poly.chainId).toBe(137);
+    expect(polyById.chainId).toBe(137);
 });
 //# sourceMappingURL=Networks.test.js.map

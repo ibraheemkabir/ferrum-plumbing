@@ -37,7 +37,7 @@ function chainToEthNetwork(chain: any): EthNetwork {
 	if (id === 'ETHEREUM_MAINNET') { id = 'ETHEREUM'; }
 	if (id === 'BSC_MAINNET') { id = 'BSC'; }
 	if (id === 'BSC_CHAPEL') { id = 'BSC_TESTNET'; cur = 'BNB'; }
-	if (id === 'POLYGON_MAINNET') { id = 'POLYGON'; }
+	if (id === 'MATIC_MAINNET') { id = 'POLYGON'; }
 	if (id === 'ETHEREUM_RINKEBY') { id = 'RINKEBY'; cur = 'ETH'; chain.chainId = 4; }
 	return {
 		id: id,

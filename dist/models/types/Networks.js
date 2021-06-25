@@ -27,7 +27,7 @@ function chainToEthNetwork(chain) {
         id = 'BSC_TESTNET';
         cur = 'BNB';
     }
-    if (id === 'POLYGON_MAINNET') {
+    if (id === 'MATIC_MAINNET') {
         id = 'POLYGON';
     }
     if (id === 'ETHEREUM_RINKEBY') {
