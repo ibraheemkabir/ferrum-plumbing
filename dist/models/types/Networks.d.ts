@@ -5,6 +5,7 @@ export interface EthNetwork {
     baseCurrency: string;
     chainId: number;
     explorer: string;
+    testnet: boolean;
 }
 export declare class Networks {
     static CHAINS: EthNetwork[];

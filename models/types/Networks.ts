@@ -25,6 +25,7 @@ export interface EthNetwork {
 	baseCurrency: string;
 	chainId: number;
 	explorer: string;
+	testnet: boolean;
 }
 
 function chainToEthNetwork(chain: any): EthNetwork {
@@ -33,6 +34,7 @@ function chainToEthNetwork(chain: any): EthNetwork {
 
 	// Backward compatiblity
 	let cur = chain.nativeCurrency.symbol;
+        let testnet = chain.network !== 'mainnet';
 	if (id === 'MATIC_TESTNET') { id = 'MUMBAI_TESTNET'; cur = 'MATIC'; }
 	if (id === 'ETHEREUM_MAINNET') { id = 'ETHEREUM'; }
 	if (id === 'BSC_MAINNET') { id = 'BSC'; }
@@ -48,6 +50,7 @@ function chainToEthNetwork(chain: any): EthNetwork {
 		explorer: ((chain.explorers || [])
 			.filter((e: any) => e.standard === 'EIP3091')
 			.map((e: any) => e.url) || [])[0] || '',
+                testnet,
 	} as EthNetwork;
 }
 

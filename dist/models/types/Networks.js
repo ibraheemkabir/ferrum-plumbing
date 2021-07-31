@@ -13,6 +13,7 @@ function chainToEthNetwork(chain) {
     let id = `${chain.chain.toUpperCase()}_${chain.network.toUpperCase()}`;
     // Backward compatiblity
     let cur = chain.nativeCurrency.symbol;
+    let testnet = chain.network !== 'mainnet';
     if (id === 'MATIC_TESTNET') {
         id = 'MUMBAI_TESTNET';
         cur = 'MATIC';
@@ -44,6 +45,7 @@ function chainToEthNetwork(chain) {
         explorer: ((chain.explorers || [])
             .filter((e) => e.standard === 'EIP3091')
             .map((e) => e.url) || [])[0] || '',
+        testnet,
     };
 }
 function byId(key, items) {
