@@ -27,4 +27,5 @@ export * from '../logging/LoggerFactory';
 export * from '../logging/ConfigurableLogger';
 export * from '../scheduler/LongRunningScheduler';
 export * from '../models/types/Networks';
+export * from '../utils/Fetcher';
 //# sourceMappingURL=index.d.ts.map

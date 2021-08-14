@@ -21,4 +21,5 @@ __export(require("../logging/LoggerFactory"));
 __export(require("../logging/ConfigurableLogger"));
 __export(require("../scheduler/LongRunningScheduler"));
 __export(require("../models/types/Networks"));
+__export(require("../utils/Fetcher"));
 //# sourceMappingURL=index.js.map
