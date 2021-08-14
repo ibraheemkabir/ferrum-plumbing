@@ -8,6 +8,8 @@ export declare class SecretAuthProvider implements AuthenticationProvider, Authe
     };
     getAuthSession(): string;
     isValid(headers: any): boolean;
+    isValidAsync(headers: any): Promise<boolean>;
     verify(headers: any): void;
+    verifyAsync(headers: any): Promise<void>;
 }
 //# sourceMappingURL=Authentication.d.ts.map

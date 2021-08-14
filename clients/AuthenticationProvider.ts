@@ -6,5 +6,7 @@ export interface AuthenticationProvider {
 
 export interface AuthenticationVerifyer {
     isValid(headers: any): boolean;
+    isValidAsync(headers: any): Promise<boolean>;
     verify(headers: any): void;
+    verifyAsync(headers: any): Promise<void>;
 }

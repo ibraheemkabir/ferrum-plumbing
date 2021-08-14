@@ -14,8 +14,14 @@ class SecretAuthProvider {
     isValid(headers) {
         return (headers['X-Secret'] || headers['x-secret']) === this.secret;
     }
+    async isValidAsync(headers) {
+        return this.isValid(headers);
+    }
     verify(headers) {
         ValidationUtils_1.ValidationUtils.isTrue(this.isValid(headers), 'Unauthorized');
+    }
+    async verifyAsync(headers) {
+        this.verify(headers);
     }
 }
 exports.SecretAuthProvider = SecretAuthProvider;
