@@ -10,11 +10,23 @@ const CLEANUP_TIME= 300000; // 5 minutes
 
 export class LocalCache implements Injectable {
   private readonly cache = new Map<string, any>();
+  private readonly promiseCache = new Map<string, Promise<any>>();
   private lastCleanup = Date.now();
-  async getAsync<T>(key: string, factory: () => Promise<T>, timeout?: number): Promise<T> {
+
+  async getAsync<T>(key: string, factory?: () => Promise<T>, timeout?: number): Promise<T> {
     if (!this.get(key)) {
-      const res = await factory();
-      this.set(key, res, timeout);
+      if (this.promiseCache.has(key)) {
+        return await this.promiseCache.get(key);
+      }
+      if (factory) {
+        const res = factory!();
+        try {
+          this.promiseCache.set(key, res);
+          this.set(key, await res, timeout);
+        } finally {
+          this.promiseCache.delete(key);
+        }
+      }
     }
     return  this.get<T>(key);
   }
@@ -29,7 +41,7 @@ export class LocalCache implements Injectable {
     if (res && res.timeout && (res.time + res.timeout) < Date.now()) {
       return undefined;
     }
-    return res ? res.item : res;
+    return res ? res.item : undefined;
   }
 
   remove(key: string) {

@@ -16,8 +16,8 @@ export class SecretAuthProvider implements AuthenticationProvider, Authenticatio
         return (headers['X-Secret'] || headers['x-secret']) === this.secret;
     }
 
-	async isValidAsync(headers: any): Promise<boolean> {
-		return this.isValid(headers);
+	async isValidAsync(headers: any): Promise<[boolean, string]> {
+		return [this.isValid(headers), ''];
 	}
 
     verify(headers: any): void {

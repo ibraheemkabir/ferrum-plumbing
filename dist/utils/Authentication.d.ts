@@ -8,7 +8,7 @@ export declare class SecretAuthProvider implements AuthenticationProvider, Authe
     };
     getAuthSession(): string;
     isValid(headers: any): boolean;
-    isValidAsync(headers: any): Promise<boolean>;
+    isValidAsync(headers: any): Promise<[boolean, string]>;
     verify(headers: any): void;
     verifyAsync(headers: any): Promise<void>;
 }
