@@ -6,6 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // Chains downloaded from https://chainid.network/chains.json
 const ValidationUtils_1 = require("../../utils/ValidationUtils");
 const Chains_json_1 = __importDefault(require("./Chains.json"));
+function updateLogoForNetwork(network, logoUri, logoBase64) {
+    Networks.for(network).chainLogoUri = logoUri;
+    Networks.for(network).chainLogoBase64 = logoBase64;
+}
+exports.updateLogoForNetwork = updateLogoForNetwork;
 function chainToEthNetwork(chain) {
     if (chain.chain === 'ETH') {
         chain.chain = 'ETHEREUM';
@@ -46,6 +51,7 @@ function chainToEthNetwork(chain) {
             .filter((e) => e.standard === 'EIP3091')
             .map((e) => e.url) || [])[0] || '',
         testnet,
+        defaultRpcEndpoint: (chain.rpc || []).find((r) => (r || '').indexOf('{') <= 0) || '',
     };
 }
 function byId(key, items) {

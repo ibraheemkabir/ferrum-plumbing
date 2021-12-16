@@ -6,7 +6,11 @@ export interface EthNetwork {
     chainId: number;
     explorer: string;
     testnet: boolean;
+    defaultRpcEndpoint: string;
+    chainLogoUri?: string;
+    chainLogoBase64?: string;
 }
+export declare function updateLogoForNetwork(network: string, logoUri?: string, logoBase64?: string): void;
 export declare class Networks {
     static CHAINS: EthNetwork[];
     static CHAINS_BY_ID: Map<string, EthNetwork>;

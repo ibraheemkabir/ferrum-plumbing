@@ -26,6 +26,15 @@ export interface EthNetwork {
 	chainId: number;
 	explorer: string;
 	testnet: boolean;
+	defaultRpcEndpoint: string;
+	chainLogoUri?: string;
+	chainLogoBase64?: string;
+}
+
+export function updateLogoForNetwork(network: string, logoUri?: string, logoBase64?: string) {
+	const net = Networks.for(network);
+	net.chainLogoUri = logoUri || net.chainLogoUri;
+	net.chainLogoBase64 = logoBase64 || net.chainLogoBase64;
 }
 
 function chainToEthNetwork(chain: any): EthNetwork {
@@ -51,8 +60,10 @@ function chainToEthNetwork(chain: any): EthNetwork {
 			.filter((e: any) => e.standard === 'EIP3091')
 			.map((e: any) => e.url) || [])[0] || '',
                 testnet,
+		defaultRpcEndpoint: (chain.rpc || []).find((r: string) => (r || '').indexOf('{') <= 0) || '',
 	} as EthNetwork;
 }
+
 
 function byId(key: (k: EthNetwork) => any, items: EthNetwork[]): Map<string, EthNetwork> {
 	const rv = new Map<string, EthNetwork>();
