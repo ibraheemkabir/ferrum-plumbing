@@ -7,8 +7,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const ValidationUtils_1 = require("../../utils/ValidationUtils");
 const Chains_json_1 = __importDefault(require("./Chains.json"));
 function updateLogoForNetwork(network, logoUri, logoBase64) {
-    Networks.for(network).chainLogoUri = logoUri;
-    Networks.for(network).chainLogoBase64 = logoBase64;
+    const net = Networks.for(network);
+    net.chainLogoUri = logoUri || net.chainLogoUri;
+    net.chainLogoBase64 = logoBase64 || net.chainLogoBase64;
 }
 exports.updateLogoForNetwork = updateLogoForNetwork;
 function chainToEthNetwork(chain) {
