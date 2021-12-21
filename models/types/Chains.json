@@ -594,7 +594,7 @@
 	  "nativeCurrency": {"name":"ONE","symbol":"ONE","decimals":18},
 	  "rpc": ["https://api.harmony.one"],
 	  "faucets": [],
-	  "explorers": [],
+	  "explorers": ["https://explorer.harmony.one"],
 	  "infoURL": "https://www.harmony.one/"
 	},
 	{
@@ -607,7 +607,7 @@
 	  "nativeCurrency": {"name":"ONE","symbol":"ONE","decimals":18},
 	  "rpc": ["https://s1.api.harmony.one"],
 	  "faucets": [],
-	  "explorers": [],
+	  "explorers": ["https://explorer.harmony.one"],
 	  "infoURL": "https://www.harmony.one/"
 	},
 	{
@@ -620,7 +620,7 @@
 	  "nativeCurrency": {"name":"ONE","symbol":"ONE","decimals":18},
 	  "rpc": ["https://s2.api.harmony.one"],
 	  "faucets": [],
-	  "explorers": [],
+	  "explorers": ["https://explorer.harmony.one"],
 	  "infoURL": "https://www.harmony.one/"
 	},
 	{
@@ -633,7 +633,7 @@
 	  "nativeCurrency": {"name":"ONE","symbol":"ONE","decimals":18},
 	  "rpc": ["https://s3.api.harmony.one"],
 	  "faucets": [],
-	  "explorers": [],
+	  "explorers": ["https://explorer.harmony.one"],
 	  "infoURL": "https://www.harmony.one/"
 	},
 	{
@@ -646,7 +646,7 @@
 	  "nativeCurrency": {"name":"ONE","symbol":"ONE","decimals":18},
 	  "rpc": ["https://api.s0.b.hmny.io"],
 	  "faucets": [],
-	  "explorers": [],
+	  "explorers": ["https://explorer.pops.one"],
 	  "infoURL": "https://www.harmony.one/"
 	},
 	{
@@ -659,7 +659,7 @@
 	  "nativeCurrency": {"name":"ONE","symbol":"ONE","decimals":18},
 	  "rpc": ["https://api.s1.b.hmny.io"],
 	  "faucets": [],
-	  "explorers": [],
+	  "explorers": ["https://explorer.pops.one"],
 	  "infoURL": "https://www.harmony.one/"
 	},
 	{
@@ -672,7 +672,7 @@
 	  "nativeCurrency": {"name":"ONE","symbol":"ONE","decimals":18},
 	  "rpc": ["https://api.s2.b.hmny.io"],
 	  "faucets": [],
-	  "explorers": [],
+	  "explorers": ["https://explorer.pops.one"],
 	  "infoURL": "https://www.harmony.one/"
 	},
 	{
@@ -685,7 +685,7 @@
 	  "nativeCurrency": {"name":"ONE","symbol":"ONE","decimals":18},
 	  "rpc": ["https://api.s3.b.hmny.io"],
 	  "faucets": [],
-	  "explorers": [],
+	  "explorers": ["https://explorer.pops.one"],
 	  "infoURL": "https://www.harmony.one/"
 	},
 	{
