@@ -50,6 +50,17 @@ function chainToEthNetwork(chain: any): EthNetwork {
 	if (id === 'BSC_CHAPEL') { id = 'BSC_TESTNET'; cur = 'BNB'; }
 	if (id === 'MATIC_MAINNET') { id = 'POLYGON'; }
 	if (id === 'ETHEREUM_RINKEBY') { id = 'RINKEBY'; cur = 'ETH'; chain.chainId = 4; }
+
+	// Harmony special case
+	if (chain.chainId === 1666700000) { id = 'HARMONY_TESTNET_0'; }
+	if (chain.chainId === 1666700001) { id = 'HARMONY_TESTNET_1'; }
+	if (chain.chainId === 1666700002) { id = 'HARMONY_TESTNET_2'; }
+	if (chain.chainId === 1666700003) { id = 'HARMONY_TESTNET_3'; }
+	if (chain.chainId === 1666600000) { id = 'HARMONY_MAINNET_0'; }
+	if (chain.chainId === 1666600001) { id = 'HARMONY_MAINNET_1'; }
+	if (chain.chainId === 1666600002) { id = 'HARMONY_MAINNET_2'; }
+	if (chain.chainId === 1666600003) { id = 'HARMONY_MAINNET_3'; }
+
 	return {
 		id: id,
 		displayName: chain.name,
