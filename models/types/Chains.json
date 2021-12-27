@@ -1387,7 +1387,7 @@
 	  "nativeCurrency": {"name":"Avalanche","symbol":"AVAX","decimals":18},
 	  "rpc": ["https://api.avax-test.network/ext/bc/C/rpc"],
 	  "faucets": ["https://faucet.avax-test.network/"],
-	  "explorers":  [{"name":"snowtrace-testnet","url":"https://testnet.snowtrace.io/","standard":"EIP3091"}],
+	  "explorers": [{"name":"snowtrace-testnet","url":"https://testnet.snowtrace.io/","standard":"EIP3091"}],
 	  "infoURL": "https://cchain.explorer.avax-test.network"
 	},
 	{
