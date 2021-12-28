@@ -42,6 +42,9 @@ function chainToEthNetwork(chain) {
         cur = 'ETH';
         chain.chainId = 4;
     }
+    if (id === 'MOON_MOONRIVER') {
+        testnet = false;
+    }
     // Harmony special case
     if (chain.chainId === 1666700000) {
         id = 'HARMONY_TESTNET_0';

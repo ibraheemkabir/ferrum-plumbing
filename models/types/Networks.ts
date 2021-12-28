@@ -50,6 +50,7 @@ function chainToEthNetwork(chain: any): EthNetwork {
 	if (id === 'BSC_CHAPEL') { id = 'BSC_TESTNET'; cur = 'BNB'; }
 	if (id === 'MATIC_MAINNET') { id = 'POLYGON'; }
 	if (id === 'ETHEREUM_RINKEBY') { id = 'RINKEBY'; cur = 'ETH'; chain.chainId = 4; }
+	if (id === 'MOON_MOONRIVER') { testnet = false; }
 
 	// Harmony special case
 	if (chain.chainId === 1666700000) { id = 'HARMONY_TESTNET_0'; }
