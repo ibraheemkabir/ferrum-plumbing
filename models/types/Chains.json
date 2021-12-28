@@ -1,6 +1,6 @@
 [
 	{
-	  "name": "Ethereum Mainnet",
+	  "name": "Ethereum",
 	  "chainId": 1,
 	  "shortName": "eth",
 	  "chain": "ETH",
@@ -338,7 +338,7 @@
 	  "infoURL": "https://hecoinfo.com"
 	},
 	{
-	  "name": "Moonbeam Polkadot",
+	  "name": "Moonbeam",
 	  "chainId": 1284,
 	  "shortName": "mbeam",
 	  "chain": "MOON",
@@ -351,7 +351,7 @@
 	  "infoURL": "https://moonbeam.network/networks/moonbeam/"
 	},
 	{
-	  "name": "Moonriver Kusama",
+	  "name": "Moonriver",
 	  "chainId": 1285,
 	  "shortName": "mriver",
 	  "chain": "MOON",
@@ -364,7 +364,7 @@
 	  "infoURL": "https://moonbeam.network/networks/moonriver/"
 	},
 	{
-	  "name": "Moonrock Rococo",
+	  "name": "Moonrock",
 	  "chainId": 1286,
 	  "shortName": "mrock",
 	  "chain": "MOON",
@@ -377,7 +377,7 @@
 	  "infoURL": ""
 	},
 	{
-	  "name": "Moonbeam Testnet Moonbase Alpha",
+	  "name": "Moonbase Alpha",
 	  "chainId": 1287,
 	  "shortName": "mbase",
 	  "chain": "MOON",
@@ -481,7 +481,7 @@
 	  "infoURL": "https://pepchain.io"
 	},
 	{
-	  "name": "Matic Mainnet",
+	  "name": "Polygon (Matic)",
 	  "chainId": 137,
 	  "shortName": "matic",
 	  "chain": "Matic",
@@ -1001,7 +1001,7 @@
 	  "infoURL": "https://fantom.foundation"
 	},
 	{
-	  "name": "Shiden Mainnet",
+	  "name": "Shiden",
 	  "chainId": 336,
 	  "shortName": "shiden",
 	  "chain": "SHIDEN",
@@ -1014,7 +1014,7 @@
 	  "infoURL": "https://docs.astar.network/"
 	},
 	{
-	  "name": "Shiden Shibuya Testnet",
+	  "name": "Shiden Shibuya",
 	  "chainId": 81,
 	  "shortName": "shiden",
 	  "chain": "SHIDEN",
@@ -1378,7 +1378,7 @@
 	  "infoURL": "https://athereum.ava.network"
 	},
 	{
-	  "name": "Avalanche Fuji Testnet",
+	  "name": "Avalanche Fuji",
 	  "chainId": 43113,
 	  "shortName": "Fuji",
 	  "chain": "AVAX",
@@ -1391,7 +1391,7 @@
 	  "infoURL": "https://cchain.explorer.avax-test.network"
 	},
 	{
-	  "name": "Avalanche Mainnet",
+	  "name": "Avalanche",
 	  "chainId": 43114,
 	  "shortName": "Avalanche",
 	  "chain": "AVAX",
@@ -1573,7 +1573,7 @@
 	  "infoURL": "https://tao.network"
 	},
 	{
-	  "name": "Binance Smart Chain Mainnet",
+	  "name": "BSC",
 	  "chainId": 56,
 	  "shortName": "bnb",
 	  "chain": "BSC",
@@ -1950,7 +1950,7 @@
 	  "infoURL": "https://scan.genechain.io/"
 	},
 	{
-	  "name": "Matic Testnet Mumbai",
+	  "name": "Polygon (Mumbai)",
 	  "chainId": 80001,
 	  "shortName": "maticmum",
 	  "chain": "Matic",
@@ -2171,7 +2171,7 @@
 	  "infoURL": "https://www.cryptokylin.io/"
 	},
 	{
-	  "name": "Binance Smart Chain Testnet",
+	  "name": "BSC Testnet",
 	  "chainId": 97,
 	  "shortName": "bnbt",
 	  "chain": "BSC",
