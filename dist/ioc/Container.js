@@ -33,13 +33,17 @@ class Container {
             return this.singleTons[name];
         }
         this.stack.add(name);
-        const res = this.catalog[name](container);
-        res.__container_id = container.__id;
-        this.stack.delete(name);
-        if (this.singleTons[name]) {
-            this.singleTons[name] = res;
+        try {
+            const res = this.catalog[name](container);
+            res.__container_id = container.__id;
+            if (this.singleTons[name]) {
+                this.singleTons[name] = res;
+            }
+            return res;
         }
-        return res;
+        finally {
+            this.stack.delete(name);
+        }
     }
     getContext() {
         throw new Error('This context is not a lifecycle managed context');

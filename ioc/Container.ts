@@ -53,15 +53,18 @@ export class Container {
     }
 
     this.stack.add(name);
-    const res = this.catalog[name](container) as any;
-    res.__container_id = container.__id;
-    this.stack.delete(name);
+    try {
+        const res = this.catalog[name](container) as any;
+        res.__container_id = container.__id;
 
-    if (this.singleTons[name]) {
-      this.singleTons[name] = res;
+        if (this.singleTons[name]) {
+          this.singleTons[name] = res;
+        }
+
+        return res;
+    } finally {
+        this.stack.delete(name);
     }
-
-    return res;
   }
 
   getContext<T>(): () => LifecycleContext<T> {
