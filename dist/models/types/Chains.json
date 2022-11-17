@@ -1287,6 +1287,19 @@
         "infoURL": "https://telos.net"
     },
     {
+        "name": "Velas Mainnet",
+        "chainId": 106,
+        "shortName": "velas",
+        "chain": "VELAS",
+        "network": "mainnet",
+        "networkId": 1,
+        "nativeCurrency": { "name": "Velas token", "symbol": "VLX", "decimals": 18 },
+        "rpc": ["https://explorer.velas.com/rpc"],
+        "faucets": [],
+        "explorers": [],
+        "infoURL": "https://explorer.velas.com"
+    },
+    {
         "name": "Ethereum Testnet Kovan",
         "chainId": 42,
         "shortName": "kov",
