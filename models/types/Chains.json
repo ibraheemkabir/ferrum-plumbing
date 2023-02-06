@@ -25,6 +25,19 @@
 	  "explorers": [],
 	  "infoURL": "https://optimism.io"
 	},
+        {
+	  "name": "Ferrum Testnet",
+	  "chainId": 26026,
+	  "shortName": "frm",
+	  "chain": "FRM",
+	  "network": "testnet",
+	  "networkId": 26026,
+	  "nativeCurrency": {"name":"Ferrum","symbol":"tFRM","decimals":18},
+	  "rpc": ["http://testnet.dev.svcs.ferrumnetwork.io:9933"],
+	  "faucets": ["https://testnet.dev.svcs.ferrumnetwork.io/faucet/"],
+	  "explorers": [{"name":"polkadot.js","url":"https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ftestnet.dev.svcs.ferrumnetwork.io#/explorer"}],
+	  "infoURL": "https://ferrum.network"
+        },
 	{
 	  "name": "xDAI Chain",
 	  "chainId": 100,
