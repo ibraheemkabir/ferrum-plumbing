@@ -29,7 +29,7 @@
 	  "name": "Ferrum Testnet",
 	  "chainId": 26026,
 	  "shortName": "frm",
-	  "chain": "FRM",
+	  "chain": "ferrum",
 	  "network": "testnet",
 	  "networkId": 26026,
 	  "nativeCurrency": {"name":"Ferrum","symbol":"tFRM","decimals":18},
