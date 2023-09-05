@@ -1,6 +1,6 @@
 [
 	{
-	  "name": "Ethereum Mainnet",
+	  "name": "Ethereum",
 	  "chainId": 1,
 	  "shortName": "eth",
 	  "chain": "ETH",
@@ -25,6 +25,19 @@
 	  "explorers": [],
 	  "infoURL": "https://optimism.io"
 	},
+        {
+	  "name": "Ferrum Testnet",
+	  "chainId": 26026,
+	  "shortName": "frm",
+	  "chain": "ferrum",
+	  "network": "testnet",
+	  "networkId": 26026,
+	  "nativeCurrency": {"name":"Ferrum","symbol":"tFRM","decimals":18},
+	  "rpc": ["http://testnet.dev.svcs.ferrumnetwork.io:9933"],
+	  "faucets": ["https://testnet.dev.svcs.ferrumnetwork.io/faucet/"],
+	  "explorers": [{"name":"polkadot.js","url":"https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Ftestnet.dev.svcs.ferrumnetwork.io#/explorer"}],
+	  "infoURL": "https://ferrum.network"
+        },
 	{
 	  "name": "xDAI Chain",
 	  "chainId": 100,
@@ -338,7 +351,7 @@
 	  "infoURL": "https://hecoinfo.com"
 	},
 	{
-	  "name": "Moonbeam Polkadot",
+	  "name": "Moonbeam",
 	  "chainId": 1284,
 	  "shortName": "mbeam",
 	  "chain": "MOON",
@@ -351,7 +364,7 @@
 	  "infoURL": "https://moonbeam.network/networks/moonbeam/"
 	},
 	{
-	  "name": "Moonriver Kusama",
+	  "name": "Moonriver",
 	  "chainId": 1285,
 	  "shortName": "mriver",
 	  "chain": "MOON",
@@ -364,7 +377,7 @@
 	  "infoURL": "https://moonbeam.network/networks/moonriver/"
 	},
 	{
-	  "name": "Moonrock Rococo",
+	  "name": "Moonrock",
 	  "chainId": 1286,
 	  "shortName": "mrock",
 	  "chain": "MOON",
@@ -377,7 +390,7 @@
 	  "infoURL": ""
 	},
 	{
-	  "name": "Moonbeam Testnet Moonbase Alpha",
+	  "name": "Moonbase Alpha",
 	  "chainId": 1287,
 	  "shortName": "mbase",
 	  "chain": "MOON",
@@ -481,7 +494,7 @@
 	  "infoURL": "https://pepchain.io"
 	},
 	{
-	  "name": "Matic Mainnet",
+	  "name": "Polygon (Matic)",
 	  "chainId": 137,
 	  "shortName": "matic",
 	  "chain": "Matic",
@@ -1001,7 +1014,7 @@
 	  "infoURL": "https://fantom.foundation"
 	},
 	{
-	  "name": "Shiden Mainnet",
+	  "name": "Shiden",
 	  "chainId": 336,
 	  "shortName": "shiden",
 	  "chain": "SHIDEN",
@@ -1014,7 +1027,7 @@
 	  "infoURL": "https://docs.astar.network/"
 	},
 	{
-	  "name": "Shiden Shibuya Testnet",
+	  "name": "Shiden Shibuya",
 	  "chainId": 81,
 	  "shortName": "shiden",
 	  "chain": "SHIDEN",
@@ -1287,6 +1300,19 @@
 	  "infoURL": "https://telos.net"
 	},
 	{
+        "name": "Velas Mainnet",
+        "chainId": 106,
+        "shortName": "velas",
+        "chain": "VELAS",
+        "network": "mainnet",
+        "networkId": 1,
+        "nativeCurrency": { "name": "Velas token", "symbol": "VLX", "decimals": 18 },
+        "rpc": ["https://explorer.velas.com/rpc"],
+        "faucets": [],
+        "explorers": [],
+        "infoURL": "https://explorer.velas.com"
+    },
+	{
 	  "name": "Ethereum Testnet Kovan",
 	  "chainId": 42,
 	  "shortName": "kov",
@@ -1339,6 +1365,32 @@
 	  "infoURL": "https://arbitrum.io"
 	},
 	{
+		"name": "Arbitrum One",
+		"chainId": 42161,
+		"shortName": "arbitrum",
+		"chain": "ETH",
+		"network": "arbitrum",
+		"networkId": 42161,
+		"nativeCurrency": {"name":"Arbitrum","symbol":"ARETH","decimals":18},
+		"rpc": ["https://endpoints.omniatech.io/v1/arbitrum/one/public"],
+		"faucets": [],
+		"explorers": [],
+		"infoURL": "https://arbitrum.io"
+	},
+	{
+        "name": "Arbitrum One",
+        "chainId": 42161,
+        "shortName": "arbitrum",
+        "chain": "ETHEREUM",
+        "network": "arbitrum",
+        "networkId": 42161,
+        "nativeCurrency": { "name": "Arbitrum", "symbol": "ARETH", "decimals": 18 },
+        "rpc": ["https://endpoints.omniatech.io/v1/arbitrum/one/public"],
+        "faucets": [],
+        "explorers": [],
+        "infoURL": "https://arbitrum.io"
+    },
+	{
 	  "name": "Celo Mainnet",
 	  "chainId": 42220,
 	  "shortName": "CELO",
@@ -1378,7 +1430,7 @@
 	  "infoURL": "https://athereum.ava.network"
 	},
 	{
-	  "name": "Avalanche Fuji Testnet",
+	  "name": "Avalanche Fuji",
 	  "chainId": 43113,
 	  "shortName": "Fuji",
 	  "chain": "AVAX",
@@ -1391,7 +1443,7 @@
 	  "infoURL": "https://cchain.explorer.avax-test.network"
 	},
 	{
-	  "name": "Avalanche Mainnet",
+	  "name": "Avalanche",
 	  "chainId": 43114,
 	  "shortName": "Avalanche",
 	  "chain": "AVAX",
@@ -1573,7 +1625,7 @@
 	  "infoURL": "https://tao.network"
 	},
 	{
-	  "name": "Binance Smart Chain Mainnet",
+	  "name": "BSC",
 	  "chainId": 56,
 	  "shortName": "bnb",
 	  "chain": "BSC",
@@ -1950,7 +2002,7 @@
 	  "infoURL": "https://scan.genechain.io/"
 	},
 	{
-	  "name": "Matic Testnet Mumbai",
+	  "name": "Polygon (Mumbai)",
 	  "chainId": 80001,
 	  "shortName": "maticmum",
 	  "chain": "Matic",
@@ -2171,7 +2223,7 @@
 	  "infoURL": "https://www.cryptokylin.io/"
 	},
 	{
-	  "name": "Binance Smart Chain Testnet",
+	  "name": "BSC Testnet",
 	  "chainId": 97,
 	  "shortName": "bnbt",
 	  "chain": "BSC",
